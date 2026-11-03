@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jayhiltin Hotel & Suites | Luxury Redefined</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#050505',
+                        cardBg: '#121212',
+                        borderMuted: '#222222'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .glass-header {
+            background: rgba(5, 5, 5, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .glass-dock {
+            background: rgba(18, 18, 18, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .glass-card {
+            background: rgba(18, 18, 18, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .perspective-carousel {
+            perspective: 1200px;
+        }
+        .carousel-card {
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-style: preserve-3d;
+        }
+        .carousel-card:hover {
+            transform: scale(1.02) translateZ(10px);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-white antialiased font-sans overflow-x-hidden selection:bg-white selection:text-black">
+
+    <!-- MAIN BRAND NAVIGATION HEADER -->
+  <!-- MAIN BRAND NAVIGATION HEADER -->
+<header class="sticky top-0 z-40 glass-header border-b border-borderMuted px-4 md:px-12 py-3 flex justify-between items-center">
+    
+    <!-- Exact Pill Capsule: Rounded Logo Image + Typed Text -->
+    <a href="index.html" class="flex items-center gap-3 bg-[#0D1117]/90 border border-white/20 rounded-full py-1.5 px-4 shadow-xl backdrop-blur-md hover:border-white transition-all">
+        <!-- Rounded Circular Image Container -->
+        <div class="w-9 h-9 rounded-full overflow-hidden bg-white/10 border border-white/30 flex items-center justify-center shrink-0">
+            <img src="images/logo.png" alt="Jay Hiltin Logo" class="w-full h-full object-cover scale-125">
+        </div>
+        <!-- Typed Brand Name & Subtext -->
+        <div class="pr-2">
+            <h1 class="text-xs md:text-sm font-extrabold tracking-[0.2em] text-white uppercase leading-none">JAY HILTIN</h1>
+            <p class="text-[7px] md:text-[8px] text-zinc-400 tracking-[0.25em] uppercase mt-1">HOTEL & SUITES</p>
+        </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="hidden lg:flex items-center gap-6 text-xs tracking-widest uppercase font-medium text-zinc-300">
+        <a href="index.html" class="hover:text-white transition-colors">Home</a>
+        <a href="overview.html" class="hover:text-white transition-colors">Overview</a>
+        <a href="amenities.html" class="hover:text-white transition-colors">Amenities</a>
+        <a href="rooms.html" class="hover:text-white transition-colors">Rooms & Suites</a>
+        <a href="policies.html" class="hover:text-white transition-colors">Policies</a>
+        <a href="location.html" class="hover:text-white transition-colors">Location</a>
+        <a href="https://jayhiltin.infinityfreeapp.com/" target="_blank" class="text-amber-400 hover:text-amber-300 transition-colors flex items-center gap-1.5 font-bold">
+            <i class="fa-solid fa-crown text-[10px]"></i> Loyalty Program
+        </a>
+    </div>
+
+    <!-- Desktop Reservation Route Button -->
+    <a href="rooms.html" 
+       class="hidden lg:flex bg-white text-black hover:bg-zinc-200 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider transition-all duration-300 items-center gap-2">
+        <i class="fa-solid fa-calendar-check"></i> DIRECT RESERVATION
+    </a>
+
+    <!-- Mobile Hamburger Toggle Button -->
+    <button id="menu-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu" class="lg:hidden text-white bg-white/10 hover:bg-white/20 border border-white/20 p-2.5 rounded-lg text-base focus:outline-none transition-colors">
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+    </button>
+</header>
+
+<!-- MOBILE NAVIGATION DRAWER -->
+<div id="mobile-menu" class="hidden fixed inset-x-0 top-[65px] z-30 bg-black/95 border-b border-borderMuted p-6 backdrop-blur-xl lg:hidden space-y-4 text-sm font-medium tracking-wider uppercase transition-all duration-300">
+    <a href="index.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Home</a>
+    <a href="overview.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Overview</a>
+    <a href="amenities.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Amenities</a>
+    <a href="rooms.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Rooms & Suites</a>
+    <a href="policies.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Policies</a>
+    <a href="location.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Location</a>
+    <a href="https://jayhiltin.infinityfreeapp.com/" target="_blank" onclick="toggleMobileMenu()" class="block py-2 text-amber-400 font-bold border-b border-borderMuted/50 flex items-center gap-2">
+        <i class="fa-solid fa-crown text-xs"></i> Loyalty Program
+    </a>
+    <a href="rooms.html" 
+       class="mt-4 bg-white text-black font-bold text-xs py-3 rounded-lg text-center block hover:bg-zinc-200 transition-colors">
+        <i class="fa-solid fa-calendar-check mr-2"></i> DIRECT RESERVATION
+    </a>
+</div>
+    <!-- MOBILE NAVIGATION DRAWER -->
+    <div id="mobile-menu" class="hidden fixed inset-x-0 top-[65px] z-30 bg-black/95 border-b border-borderMuted p-6 backdrop-blur-xl lg:hidden space-y-4 text-sm font-medium tracking-wider uppercase transition-all duration-300">
+        <a href="index.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Home</a>
+        <a href="overview.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Overview</a>
+        <a href="amenities.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Amenities</a>
+        <a href="rooms.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Rooms & Suites</a>
+        <a href="policies.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Policies</a>
+        <a href="location.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Location</a>
+        <a href="rooms.html" 
+           class="mt-4 bg-white text-black font-bold text-xs py-3 rounded-lg text-center block hover:bg-zinc-200 transition-colors">
+            <i class="fa-solid fa-calendar-check mr-2"></i> DIRECT RESERVATION
+        </a>
+    </div>
+
+    <!-- HERO SECTION WITH BACKGROUND COVER IMAGE -->
+    <section id="overview" class="relative min-h-[85vh] flex items-center px-4 md:px-12 py-16 overflow-hidden bg-cover bg-center bg-no-repeat" style="background-image: url('images/cover.jpg');">
+        
+        <!-- Black Overlay for Visual Contrast -->
+        <div class="absolute inset-0 bg-black/60 backdrop-brightness-75 z-0"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Hero Text Block -->
+            <div class="lg:col-span-7">
+                <span class="inline-block text-zinc-300 text-xs font-mono uppercase tracking-[0.2em] mb-4 border border-white/20 px-3.5 py-1 rounded-full bg-black/40 backdrop-blur-md">
+                    Beyond Your Imagination
+                </span>
+                <h2 class="text-4xl md:text-7xl font-light tracking-tight leading-[1.05] mb-6 drop-shadow-md">
+                    Redefining Luxury & <span class="font-bold underline decoration-white/40 decoration-1 underline-offset-8">Relaxation in Kaduna.</span>
+                </h2>
+                <p class="text-zinc-300 text-base md:text-lg max-w-xl font-light leading-relaxed drop-shadow-sm">
+                    Jayhiltin Hotel & Suites is more than just a place to rest your head—it is an exclusive destination crafted for comfort, exceptional privacy, and lasting memories.
+                </p>
+            </div>
+
+            <!-- Glassmorphic Check Availability Form (Routes to rooms.html) -->
+            <div class="lg:col-span-5 glass-card p-6 md:p-8 rounded-2xl shadow-2xl">
+                <form action="rooms.html" method="GET">
+                    <h3 class="text-sm font-bold uppercase tracking-wider mb-4 border-b border-white/10 pb-3 flex justify-between items-center">
+                        Check Availability
+                        <span class="text-[10px] font-mono text-zinc-400 font-normal">Direct Rates</span>
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-[10px] text-zinc-300 uppercase tracking-widest mb-1">Check-in / Check-out</label>
+                            <input type="date" name="checkin" class="w-full bg-black/70 border border-white/20 rounded-lg px-3.5 py-2.5 text-xs text-zinc-200 focus:outline-none focus:border-white">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] text-zinc-300 uppercase tracking-widest mb-1">Guests & Rooms</label>
+                            <select name="guests" class="w-full bg-black/70 border border-white/20 rounded-lg px-3.5 py-2.5 text-xs text-zinc-200 focus:outline-none focus:border-white">
+                                <option value="1">1 Room, 1 Adult</option>
+                                <option value="2">1 Room, 2 Adults</option>
+                                <option value="family">2 Rooms, Family</option>
+                            </select>
+                        </div>
+                        <button type="submit" 
+                                class="w-full bg-white text-black font-bold text-xs py-3.5 rounded-lg text-center block hover:bg-zinc-200 transition-colors shadow-lg mt-2 uppercase tracking-wider">
+                            SEARCH AVAILABLE ROOMS
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- OVERVIEW & AMENITIES GRID -->
+    <section id="amenities" class="px-4 md:px-12 py-16 border-t border-borderMuted max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <div class="lg:col-span-5">
+                <span class="text-xs font-mono text-zinc-400 tracking-widest uppercase">About The Property</span>
+                <h3 class="text-2xl md:text-3xl font-medium tracking-wide mt-2 mb-4">An Exclusive Sanctuary</h3>
+                <p class="text-zinc-400 text-sm font-light leading-relaxed mb-6">
+                    Featuring 34 luxury guest rooms across 4 tailored tiers, custom VIP hospitality, an outdoor swimming pool, and vibrant indoor & outdoor bar lounges designed for traveling executives and leisure guests.
+                </p>
+                <div class="p-4 bg-cardBg border border-borderMuted rounded-xl">
+                    <p class="text-xs text-zinc-300 font-mono"><i class="fa-solid fa-shield-halved text-white mr-2"></i> 24/7 Security & Secured Parking Compound</p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7">
+                <h4 class="text-lg font-bold uppercase tracking-wider mb-6">Hotel Amenities</h4>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs">
+                    <div class="p-4 bg-cardBg border border-borderMuted rounded-xl flex items-center gap-3"><i class="fa-solid fa-wifi text-base text-white"></i> Free High-Speed Wi-Fi</div>
+                    <div class="p-4 bg-cardBg border border-borderMuted rounded-xl flex items-center gap-3"><i class="fa-solid fa-water-ladder text-base text-white"></i> Swimming Pool</div>
+                    <div class="p-4 bg-cardBg border border-borderMuted rounded-xl flex items-center gap-3"><i class="fa-solid fa-martini-glass-citrus text-base text-white"></i> Outdoor Bar</div>
+                    <div class="p-4 bg-cardBg border border-borderMuted rounded-xl flex items-center gap-3"><i class="fa-solid fa-glass-water text-base text-white"></i> Indoor Bar</div>
+                    <div class="p-4 bg-cardBg border border-borderMuted rounded-xl flex items-center gap-3"><i class="fa-solid fa-concierge-bell text-base text-white"></i> 24-Hour Front Desk</div>
+                    <div class="p-4 bg-cardBg border border-borderMuted rounded-xl flex items-center gap-3"><i class="fa-solid fa-square-parking text-base text-white"></i> Secured Parking</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ROOMS & SUITES (4 CATEGORIES SHOWCASE) -->
+    <section id="rooms" class="px-4 md:px-12 py-16 border-t border-borderMuted bg-black">
+        <div class="max-w-7xl mx-auto mb-8 flex justify-between items-end">
+            <div>
+                <span class="text-xs font-mono text-zinc-400 tracking-widest uppercase">Accommodations (34 Rooms Total)</span>
+                <h3 class="text-3xl font-light tracking-tight mt-1">Our Room Categories</h3>
+            </div>
+            <a href="rooms.html" class="text-xs text-white font-mono hover:underline flex items-center gap-1">
+                VIEW ROOM MATRIX & STATUS <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+        </div>
+
+        <div class="relative w-full perspective-carousel">
+            <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-8 pt-2">
+                
+                <!-- Category 1: Standard Deluxe -->
+                <a href="rooms.html" class="snap-center shrink-0 w-80 md:w-96 rounded-2xl bg-cardBg border border-borderMuted overflow-hidden carousel-card group block">
+                    <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80" alt="Standard Deluxe" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-[10px] font-mono text-zinc-400 tracking-widest">11 ROOMS AVAILABLE</span>
+                            <span class="text-[10px] bg-white/10 px-2.5 py-1 rounded-full font-mono">₦30,000 / night</span>
+                        </div>
+                        <h4 class="text-lg font-medium">Standard Deluxe</h4>
+                        <p class="text-xs text-zinc-400 mt-2 font-light">Executive bedroom with private shower, fast Wi-Fi, air conditioning, and full satellite TV package.</p>
+                        <div class="mt-5 flex items-center justify-between text-xs font-bold text-white border-t border-white/10 pt-4">
+                            <span>Check Room Status</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category 2: Deluxe -->
+                <a href="rooms.html" class="snap-center shrink-0 w-80 md:w-96 rounded-2xl bg-cardBg border border-borderMuted overflow-hidden carousel-card group block">
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Deluxe" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-[10px] font-mono text-zinc-400 tracking-widest">13 ROOMS AVAILABLE</span>
+                            <span class="text-[10px] bg-white/10 px-2.5 py-1 rounded-full font-mono">₦50,000 / night</span>
+                        </div>
+                        <h4 class="text-lg font-medium">Deluxe Room</h4>
+                        <p class="text-xs text-zinc-400 mt-2 font-light">Spacious room layout with plush queen/king bedding, ambient lighting, work station, and room service.</p>
+                        <div class="mt-5 flex items-center justify-between text-xs font-bold text-white border-t border-white/10 pt-4">
+                            <span>Check Room Status</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category 3: Business Deluxe -->
+                <a href="rooms.html" class="snap-center shrink-0 w-80 md:w-96 rounded-2xl bg-cardBg border border-borderMuted overflow-hidden carousel-card group block">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80" alt="Business Deluxe" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-[10px] font-mono text-zinc-400 tracking-widest">8 ROOMS AVAILABLE</span>
+                            <span class="text-[10px] bg-white/10 px-2.5 py-1 rounded-full font-mono">₦60,000 / night</span>
+                        </div>
+                        <h4 class="text-lg font-medium">Business Deluxe</h4>
+                        <p class="text-xs text-zinc-400 mt-2 font-light">Corporate suite equipped with executive seating, work station, high-floor views, and priority check-in.</p>
+                        <div class="mt-5 flex items-center justify-between text-xs font-bold text-white border-t border-white/10 pt-4">
+                            <span>Check Room Status</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category 4: Business Suite -->
+                <a href="rooms.html" class="snap-center shrink-0 w-80 md:w-96 rounded-2xl bg-cardBg border border-borderMuted overflow-hidden carousel-card group block">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Business Suite" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-[10px] font-mono text-zinc-400 tracking-widest">2 SUITES AVAILABLE</span>
+                            <span class="text-[10px] bg-white/10 px-2.5 py-1 rounded-full font-mono">₦80,000 / night</span>
+                        </div>
+                        <h4 class="text-lg font-medium">Business Suite</h4>
+                        <p class="text-xs text-zinc-400 mt-2 font-light">Top-tier suite featuring private lounge space, king bedroom, jacuzzi bath, and premium VIP hospitality.</p>
+                        <div class="mt-5 flex items-center justify-between text-xs font-bold text-white border-t border-white/10 pt-4">
+                            <span>Check Room Status</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DIRECT BOOKING BENEFITS -->
+    <section class="px-4 md:px-12 py-16 border-t border-borderMuted max-w-7xl mx-auto">
+        <h3 class="text-xl font-bold uppercase tracking-wider text-center mb-12">Jayhiltin Direct Guest Benefits</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-6 bg-cardBg border border-borderMuted rounded-2xl text-center">
+                <i class="fa-solid fa-tag text-2xl text-white mb-4"></i>
+                <h4 class="text-base font-bold mb-2">Best Rate Guarantee</h4>
+                <p class="text-xs text-zinc-400 font-light">Booking directly through our platform ensures you receive guaranteed best room rates.</p>
+            </div>
+            <div class="p-6 bg-cardBg border border-borderMuted rounded-2xl text-center">
+                <i class="fa-solid fa-shield-halved text-2xl text-white mb-4"></i>
+                <h4 class="text-base font-bold mb-2">Live Room Matrix</h4>
+                <p class="text-xs text-zinc-400 font-light">Inspect real-time room availability across all 34 rooms before your arrival.</p>
+            </div>
+            <div class="p-6 bg-cardBg border border-borderMuted rounded-2xl text-center">
+                <i class="fa-solid fa-concierge-bell text-2xl text-white mb-4"></i>
+                <h4 class="text-base font-bold mb-2">24-Hour Hospitality</h4>
+                <p class="text-xs text-zinc-400 font-light">Dedicated front desk concierge and security personnel available round the clock.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOTEL POLICIES TABBED SECTION -->
+    <section id="policies" class="px-4 md:px-12 py-16 border-t border-borderMuted max-w-7xl mx-auto">
+        <h3 class="text-2xl font-light tracking-tight mb-8">Hotel Policies</h3>
+        
+        <div class="flex gap-4 border-b border-borderMuted pb-4 overflow-x-auto no-scrollbar text-xs font-mono uppercase tracking-wider">
+            <button onclick="switchTab('parking')" id="tab-parking" class="tab-btn pb-2 text-white border-b-2 border-white">Parking</button>
+            <button onclick="switchTab('wifi')" id="tab-wifi" class="tab-btn pb-2 text-zinc-400 hover:text-white">Wi-Fi & Connectivity</button>
+            <button onclick="switchTab('checkin')" id="tab-checkin" class="tab-btn pb-2 text-zinc-400 hover:text-white">Check-in / Out</button>
+            <button onclick="switchTab('smoking')" id="tab-smoking" class="tab-btn pb-2 text-zinc-400 hover:text-white">Smoking Policy</button>
+        </div>
+
+        <div class="p-6 bg-cardBg border border-borderMuted rounded-2xl mt-6 text-xs text-zinc-300 font-light leading-relaxed">
+            <div id="content-parking" class="tab-content space-y-2">
+                <p><strong>Self-parking:</strong> On-site, Complimentary for registered guests.</p>
+                <p><strong>Secured Parking:</strong> Fully gated compound with 24/7 security surveillance.</p>
+            </div>
+            <div id="content-wifi" class="tab-content hidden space-y-2">
+                <p><strong>Wi-Fi Access:</strong> High-speed Wi-Fi is complimentary across all guest rooms, lobby, and poolside areas.</p>
+            </div>
+            <div id="content-checkin" class="tab-content hidden space-y-2">
+                <p><strong>Check-in Time:</strong> 2:00 PM</p>
+                <p><strong>Check-out Time:</strong> 12:00 PM (Late check-out available on request).</p>
+            </div>
+            <div id="content-smoking" class="tab-content hidden space-y-2">
+                <p><strong>Non-Smoking Rooms:</strong> All indoor guest rooms are strictly non-smoking. Designated outdoor smoking lounges are available.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION & NEARBY ATTRACTIONS -->
+    <section id="location" class="px-4 md:px-12 py-16 border-t border-borderMuted max-w-7xl mx-auto">
+        <h3 class="text-2xl font-light tracking-tight mb-8">Location & Nearby Attractions</h3>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-5 space-y-4 text-xs">
+                <div class="p-4 bg-cardBg border border-borderMuted rounded-xl flex justify-between items-center">
+                    <span><i class="fa-solid fa-shopping-bag text-white mr-2"></i> 1. Uptown Mall (Market Square)</span>
+                    <span class="text-zinc-400 font-mono">Nearby</span>
+                </div>
+                <div class="p-4 bg-cardBg border border-borderMuted rounded-xl flex justify-between items-center">
+                    <span><i class="fa-solid fa-tree text-white mr-2"></i> 2. Barnawa City Park</span>
+                    <span class="text-zinc-400 font-mono">Accessible</span>
+                </div>
+                <div class="p-4 bg-cardBg border border-borderMuted rounded-xl flex justify-between items-center">
+                    <span><i class="fa-solid fa-city text-white mr-2"></i> 3. The City Center</span>
+                    <span class="text-zinc-400 font-mono">10 Mins</span>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 bg-cardBg border border-borderMuted p-8 rounded-2xl text-center">
+                <i class="fa-solid fa-map-location-dot text-4xl text-white mb-4"></i>
+                <h4 class="text-lg font-bold mb-2">Jayhiltin Hotel & Suites</h4>
+                <p class="text-xs text-zinc-400 mb-6">Kaduna, Nigeria</p>
+                <a href="https://maps.google.com" target="_blank" class="inline-block bg-white text-black font-bold text-xs px-6 py-3 rounded-full hover:bg-zinc-200 transition-colors">
+                    GET DIRECTIONS ON GOOGLE MAPS
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FLOATING MUBIEN-STYLE BOTTOM DOCK (ROUTES TO rooms.html) -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-lg">
+        <div class="glass-dock rounded-full px-4 py-3 flex items-center justify-between shadow-2xl">
+            <a href="index.html" class="flex items-center gap-2 pl-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></span>
+                <span class="text-xs font-bold tracking-widest uppercase">Jayhiltin</span>
+            </a>
+
+            <!-- Direct Booking Trigger Routes to rooms.html -->
+            <a href="rooms.html" 
+               class="bg-white text-black px-6 py-2 rounded-full text-xs font-bold hover:bg-zinc-200 transition-all duration-300 flex items-center gap-2 shadow-lg">
+                <i class="fa-solid fa-calendar-check"></i> Book Room
+            </a>
+
+            <div class="flex items-center gap-3 pr-2 text-zinc-300 text-sm">
+                <a href="tel:+2348067008323" class="hover:text-white transition-colors"><i class="fa-solid fa-phone"></i></a>
+                <a href="mailto:enquiries@jayhiltin.com" class="hover:text-white transition-colors"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Toggle Mobile Menu Drawer
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = 'fa-solid fa-bars';
+            } else {
+                icon.className = 'fa-solid fa-xmark';
+            }
+        }
+
+        // Tab Switcher Logic for Hotel Policies
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('text-white', 'border-b-2', 'border-white');
+                btn.classList.add('text-zinc-400');
+            });
+            
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+            const activeBtn = document.getElementById('tab-' + tabName);
+            activeBtn.classList.add('text-white', 'border-b-2', 'border-white');
+            activeBtn.classList.remove('text-zinc-400');
+        }
+    </script>
+</body>
+</html>

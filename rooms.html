@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms & Suites | Jayhiltin Hotel & Suites</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#050505',
+                        cardBg: '#121212',
+                        borderMuted: '#222222'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .glass-header {
+            background: rgba(5, 5, 5, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .glass-dock {
+            background: rgba(18, 18, 18, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .glass-modal {
+            background: rgba(12, 12, 12, 0.96);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-darkBg text-white antialiased font-sans overflow-x-hidden selection:bg-white selection:text-black">
+
+    <!-- MAIN BRAND NAVIGATION HEADER -->
+   <!-- MAIN BRAND NAVIGATION HEADER -->
+<header class="sticky top-0 z-40 glass-header border-b border-borderMuted px-4 md:px-12 py-3 flex justify-between items-center">
+    
+    <!-- Exact Pill Capsule: Rounded Logo Image + Typed Text -->
+    <a href="index.html" class="flex items-center gap-3 bg-[#0D1117]/90 border border-white/20 rounded-full py-1.5 px-4 shadow-xl backdrop-blur-md hover:border-white transition-all">
+        <!-- Rounded Circular Image Container -->
+        <div class="w-9 h-9 rounded-full overflow-hidden bg-white/10 border border-white/30 flex items-center justify-center shrink-0">
+            <img src="images/logo.png" alt="Jay Hiltin Logo" class="w-full h-full object-cover scale-125">
+        </div>
+        <!-- Typed Brand Name & Subtext -->
+        <div class="pr-2">
+            <h1 class="text-xs md:text-sm font-extrabold tracking-[0.2em] text-white uppercase leading-none">JAY HILTIN</h1>
+            <p class="text-[7px] md:text-[8px] text-zinc-400 tracking-[0.25em] uppercase mt-1">HOTEL & SUITES</p>
+        </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="hidden lg:flex items-center gap-6 text-xs tracking-widest uppercase font-medium text-zinc-300">
+        <a href="index.html" class="hover:text-white transition-colors">Home</a>
+        <a href="overview.html" class="hover:text-white transition-colors">Overview</a>
+        <a href="amenities.html" class="hover:text-white transition-colors">Amenities</a>
+        <a href="rooms.html" class="hover:text-white transition-colors">Rooms & Suites</a>
+        <a href="policies.html" class="hover:text-white transition-colors">Policies</a>
+        <a href="location.html" class="hover:text-white transition-colors">Location</a>
+        <a href="https://jayhiltin.infinityfreeapp.com/" target="_blank" class="text-amber-400 hover:text-amber-300 transition-colors flex items-center gap-1.5 font-bold">
+            <i class="fa-solid fa-crown text-[10px]"></i> Loyalty Program
+        </a>
+    </div>
+
+    <!-- Desktop Reservation Route Button -->
+    <a href="rooms.html" 
+       class="hidden lg:flex bg-white text-black hover:bg-zinc-200 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider transition-all duration-300 items-center gap-2">
+        <i class="fa-solid fa-calendar-check"></i> DIRECT RESERVATION
+    </a>
+
+    <!-- Mobile Hamburger Toggle Button -->
+    <button id="menu-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu" class="lg:hidden text-white bg-white/10 hover:bg-white/20 border border-white/20 p-2.5 rounded-lg text-base focus:outline-none transition-colors">
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+    </button>
+</header>
+
+<!-- MOBILE NAVIGATION DRAWER -->
+<div id="mobile-menu" class="hidden fixed inset-x-0 top-[65px] z-30 bg-black/95 border-b border-borderMuted p-6 backdrop-blur-xl lg:hidden space-y-4 text-sm font-medium tracking-wider uppercase transition-all duration-300">
+    <a href="index.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Home</a>
+    <a href="overview.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Overview</a>
+    <a href="amenities.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Amenities</a>
+    <a href="rooms.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Rooms & Suites</a>
+    <a href="policies.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Policies</a>
+    <a href="location.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Location</a>
+    <a href="https://jayhiltin.infinityfreeapp.com/" target="_blank" onclick="toggleMobileMenu()" class="block py-2 text-amber-400 font-bold border-b border-borderMuted/50 flex items-center gap-2">
+        <i class="fa-solid fa-crown text-xs"></i> Loyalty Program
+    </a>
+    <a href="rooms.html" 
+       class="mt-4 bg-white text-black font-bold text-xs py-3 rounded-lg text-center block hover:bg-zinc-200 transition-colors">
+        <i class="fa-solid fa-calendar-check mr-2"></i> DIRECT RESERVATION
+    </a>
+</div>
+
+    <!-- MOBILE NAVIGATION DRAWER -->
+    <div id="mobile-menu" class="hidden fixed inset-x-0 top-[65px] z-30 bg-black/95 border-b border-borderMuted p-6 backdrop-blur-xl lg:hidden space-y-4 text-sm font-medium tracking-wider uppercase transition-all duration-300">
+        <a href="index.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Home</a>
+        <a href="overview.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Overview</a>
+        <a href="amenities.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Amenities</a>
+        <a href="rooms.html" onclick="toggleMobileMenu()" class="block py-2 text-white font-bold border-b border-borderMuted/50">Rooms & Suites</a>
+        <a href="policies.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Policies</a>
+        <a href="location.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Location</a>
+    </div>
+
+    <!-- ROOMS HERO TITLE -->
+    <section class="px-4 md:px-12 pt-12 pb-8 max-w-7xl mx-auto border-b border-borderMuted">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-4">
+            <div>
+                <span class="inline-block text-zinc-400 text-xs font-mono uppercase tracking-[0.2em] mb-2 border border-white/20 px-3 py-1 rounded-full bg-white/5">
+                    Live Accommodation Grid (34 Rooms)
+                </span>
+                <h2 class="text-3xl md:text-6xl font-light tracking-tight">
+                    Select Your <span class="font-bold underline decoration-white/30 underline-offset-8">Room Category</span>
+                </h2>
+            </div>
+            <p class="text-zinc-400 text-xs md:text-sm max-w-md font-light leading-relaxed">
+                Click any room tier below to open the live interactive seat-style room selection matrix and reserve your exact room number.
+            </p>
+        </div>
+    </section>
+
+    <!-- CATEGORY OVERVIEW CARDS (4 TIERS TOTAL) -->
+    <section id="inventory" class="px-4 md:px-12 py-12 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- Tier 1: Standard Deluxe -->
+            <div class="bg-cardBg border border-borderMuted rounded-2xl overflow-hidden flex flex-col justify-between group hover:border-white/50 transition-all duration-300">
+                <div>
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80" alt="Standard Deluxe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-black/80 backdrop-blur-md border border-white/20 text-[10px] font-mono text-white px-3 py-1 rounded-full uppercase">11 Total Rooms</span>
+                        <span class="absolute top-3 right-3 bg-white text-black text-sm font-bold px-4 py-1 rounded-full">₦30,000 / night</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold tracking-wide">Standard Deluxe</h3>
+                        <p class="text-xs text-zinc-400 mt-2 font-light leading-relaxed">Executive bedroom with private shower, fast Wi-Fi, air conditioning, and full satellite TV package.</p>
+                        
+                        <div class="mt-4 p-3 bg-black/60 border border-white/10 rounded-xl text-[11px] font-mono text-zinc-300">
+                            <span class="text-white font-bold block mb-1"><i class="fa-solid fa-door-closed mr-1"></i> Room Numbers:</span>
+                            <span class="text-zinc-400">105, 208, 308, 309, 310, 311, 312, 313, 314, 317, 321</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <button onclick="openRoomMatrix('Standard Deluxe', '30000', ['105','208','308','309','310','311','312','313','314','317','321'], ['208','310','314'])" 
+                            class="w-full bg-white text-black hover:bg-zinc-200 font-bold text-xs py-3.5 rounded-xl transition-colors tracking-wider uppercase flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-border-all"></i> Choose Room & Book
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tier 2: Deluxe -->
+            <div class="bg-cardBg border border-borderMuted rounded-2xl overflow-hidden flex flex-col justify-between group hover:border-white/50 transition-all duration-300">
+                <div>
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Deluxe Room" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-black/80 backdrop-blur-md border border-white/20 text-[10px] font-mono text-white px-3 py-1 rounded-full uppercase">13 Total Rooms</span>
+                        <span class="absolute top-3 right-3 bg-white text-black text-sm font-bold px-4 py-1 rounded-full">₦50,000 / night</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold tracking-wide">Deluxe Room</h3>
+                        <p class="text-xs text-zinc-400 mt-2 font-light leading-relaxed">Spacious room layout with plush queen/king bedding, ambient lighting, work station, and room service.</p>
+                        
+                        <div class="mt-4 p-3 bg-black/60 border border-white/10 rounded-xl text-[11px] font-mono text-zinc-300">
+                            <span class="text-white font-bold block mb-1"><i class="fa-solid fa-door-closed mr-1"></i> Room Numbers:</span>
+                            <span class="text-zinc-400">101, 102, 104, 201, 202, 204, 206, 207, 301, 302, 307, 315, 316</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <button onclick="openRoomMatrix('Deluxe', '50000', ['101','102','104','201','202','204','206','207','301','302','307','315','316'], ['102','204','301','315'])" 
+                            class="w-full bg-white text-black hover:bg-zinc-200 font-bold text-xs py-3.5 rounded-xl transition-colors tracking-wider uppercase flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-border-all"></i> Choose Room & Book
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tier 3: Business Deluxe -->
+            <div class="bg-cardBg border border-borderMuted rounded-2xl overflow-hidden flex flex-col justify-between group hover:border-white/50 transition-all duration-300">
+                <div>
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80" alt="Business Deluxe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-black/80 backdrop-blur-md border border-white/20 text-[10px] font-mono text-white px-3 py-1 rounded-full uppercase">8 Total Rooms</span>
+                        <span class="absolute top-3 right-3 bg-white text-black text-sm font-bold px-4 py-1 rounded-full">₦60,000 / night</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold tracking-wide">Business Deluxe</h3>
+                        <p class="text-xs text-zinc-400 mt-2 font-light leading-relaxed">Corporate suite equipped with executive seating, work station, high-floor views, and priority check-in.</p>
+                        
+                        <div class="mt-4 p-3 bg-black/60 border border-white/10 rounded-xl text-[11px] font-mono text-zinc-300">
+                            <span class="text-white font-bold block mb-1"><i class="fa-solid fa-door-closed mr-1"></i> Room Numbers:</span>
+                            <span class="text-zinc-400">103, 203, 205, 303, 304, 305, 306, 319</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <button onclick="openRoomMatrix('Business Deluxe', '60000', ['103','203','205','303','304','305','306','319'], ['203','305'])" 
+                            class="w-full bg-white text-black hover:bg-zinc-200 font-bold text-xs py-3.5 rounded-xl transition-colors tracking-wider uppercase flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-border-all"></i> Choose Room & Book
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tier 4: Business Suite -->
+            <div class="bg-cardBg border border-borderMuted rounded-2xl overflow-hidden flex flex-col justify-between group hover:border-white/50 transition-all duration-300">
+                <div>
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Business Suite" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-black/80 backdrop-blur-md border border-white/20 text-[10px] font-mono text-white px-3 py-1 rounded-full uppercase">2 Total Suites</span>
+                        <span class="absolute top-3 right-3 bg-white text-black text-sm font-bold px-4 py-1 rounded-full">₦80,000 / night</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold tracking-wide">Business Suite</h3>
+                        <p class="text-xs text-zinc-400 mt-2 font-light leading-relaxed">Top-tier suite featuring private lounge space, king bedroom, jacuzzi bath, and free airport pickup.</p>
+                        
+                        <div class="mt-4 p-3 bg-black/60 border border-white/10 rounded-xl text-[11px] font-mono text-zinc-300">
+                            <span class="text-white font-bold block mb-1"><i class="fa-solid fa-door-closed mr-1"></i> Room Numbers:</span>
+                            <span class="text-zinc-400">318, 320</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <button onclick="openRoomMatrix('Business Suite', '80000', ['318','320'], ['320'])" 
+                            class="w-full bg-white text-black hover:bg-zinc-200 font-bold text-xs py-3.5 rounded-xl transition-colors tracking-wider uppercase flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-border-all"></i> Choose Room & Book
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERACTIVE VISUAL ROOM SELECTION MATRIX MODAL -->
+    <div id="room-matrix-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-xl overflow-y-auto">
+        <div class="glass-modal w-full max-w-2xl rounded-2xl p-6 md:p-8 relative shadow-2xl border border-white/20 my-8">
+            
+            <!-- Close Button -->
+            <button onclick="closeRoomMatrix()" class="absolute top-4 right-4 text-zinc-400 hover:text-white p-2 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Header Title -->
+            <div class="mb-6">
+                <span class="text-[10px] font-mono text-zinc-400 uppercase tracking-widest block mb-1">Interactive Seat & Room Selection</span>
+                <h3 class="text-2xl font-bold text-white" id="matrix-title">Category Name</h3>
+                <p class="text-xs text-zinc-400 mt-1 font-mono" id="matrix-price">Rate: ₦0 / night</p>
+            </div>
+
+            <!-- Status Indicator Legend -->
+            <div class="flex items-center gap-6 p-3 bg-black/60 border border-white/10 rounded-xl mb-6 text-xs font-mono">
+                <div class="flex items-center gap-2">
+                    <div class="w-4 h-4 rounded bg-white border border-white"></div>
+                    <span class="text-zinc-300">Available</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-4 h-4 rounded bg-red-900/60 border border-red-500/50 flex items-center justify-center">
+                        <i class="fa-solid fa-xmark text-[9px] text-red-400"></i>
+                    </div>
+                    <span class="text-zinc-400">Taken / Booked</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-4 h-4 rounded bg-emerald-500 border border-emerald-400"></div>
+                    <span class="text-emerald-400 font-bold">Your Selected Room</span>
+                </div>
+            </div>
+
+            <!-- ROOM GRID BOXES CONTAINER -->
+            <div class="mb-8">
+                <h4 class="text-xs font-mono text-zinc-300 uppercase tracking-wider mb-3">Click an available room box to select:</h4>
+                <div id="matrix-boxes-container" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+                    <!-- Dynamic room boxes populate here -->
+                </div>
+            </div>
+
+            <!-- RESERVATION FORM (APPEARS UPON ROOM SELECTION) -->
+            <form id="matrix-booking-form" onsubmit="handleReservationSubmit(event)" class="space-y-4 pt-4 border-t border-white/10">
+                <input type="hidden" id="selected-room-price" value="0">
+                <input type="hidden" id="selected-room-number" value="">
+
+                <!-- Display Chosen Room Badge -->
+                <div class="p-3 bg-white/5 border border-white/20 rounded-xl flex justify-between items-center text-xs font-mono">
+                    <span class="text-zinc-400">Selected Room Assignment:</span>
+                    <span id="selected-room-badge" class="text-sm font-bold text-emerald-400">None (Select a room box above)</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[10px] text-zinc-300 uppercase tracking-widest mb-1">Full Name</label>
+                        <input type="text" id="guest-name" required placeholder="e.g. Abdullahi Grema" class="w-full bg-black/80 border border-white/20 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-white">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-zinc-300 uppercase tracking-widest mb-1">Phone Number</label>
+                        <input type="tel" id="guest-phone" required placeholder="+234..." class="w-full bg-black/80 border border-white/20 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-white">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[10px] text-zinc-300 uppercase tracking-widest mb-1">Check-In Date</label>
+                        <input type="date" required id="modal-checkin" onchange="calculateTotal()" class="w-full bg-black/80 border border-white/20 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-white">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-zinc-300 uppercase tracking-widest mb-1">Check-Out Date</label>
+                        <input type="date" required id="modal-checkout" onchange="calculateTotal()" class="w-full bg-black/80 border border-white/20 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-white">
+                    </div>
+                </div>
+
+                <!-- Price Calculation Box -->
+                <div class="p-4 bg-black/60 border border-white/10 rounded-xl flex justify-between items-center text-xs font-mono">
+                    <span class="text-zinc-400">Total Price:</span>
+                    <span id="modal-total-display" class="text-base font-bold text-white">₦0</span>
+                </div>
+
+                <button type="submit" id="submit-booking-btn" disabled class="w-full bg-white/20 text-zinc-400 cursor-not-allowed font-bold text-xs py-3.5 rounded-xl transition-all uppercase tracking-wider flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Select a Room Box to Enable Booking
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FLOATING MUBIEN-STYLE BOTTOM DOCK -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-lg">
+        <div class="glass-dock rounded-full px-4 py-3 flex items-center justify-between shadow-2xl">
+            <a href="index.html" class="flex items-center gap-2 pl-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></span>
+                <span class="text-xs font-bold tracking-widest uppercase">Jayhiltin</span>
+            </a>
+
+            <a href="#inventory" 
+               class="bg-white text-black px-6 py-2 rounded-full text-xs font-bold hover:bg-zinc-200 transition-all duration-300 flex items-center gap-2 shadow-lg">
+                <i class="fa-solid fa-list-check"></i> Select Room
+            </a>
+
+            <div class="flex items-center gap-3 pr-2 text-zinc-300 text-sm">
+                <a href="tel:+2348067008323" class="hover:text-white transition-colors"><i class="fa-solid fa-phone"></i></a>
+                <a href="mailto:enquiries@jayhiltin.com" class="hover:text-white transition-colors"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT ENGINE -->
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = 'fa-solid fa-bars';
+            } else {
+                icon.className = 'fa-solid fa-xmark';
+            }
+        }
+
+        let currentCategoryName = '';
+
+        function openRoomMatrix(categoryName, pricePerNight, allRoomsArray, bookedRoomsArray) {
+            currentCategoryName = categoryName;
+            document.getElementById('matrix-title').innerText = categoryName + ' Visual Layout';
+            document.getElementById('matrix-price').innerText = 'Rate: ₦' + parseInt(pricePerNight).toLocaleString() + ' / night';
+            document.getElementById('selected-room-price').value = pricePerNight;
+            
+            // Reset selection state
+            document.getElementById('selected-room-number').value = '';
+            document.getElementById('selected-room-badge').innerText = 'None (Select a room box above)';
+            document.getElementById('selected-room-badge').className = 'text-sm font-bold text-amber-400';
+            
+            const btn = document.getElementById('submit-booking-btn');
+            btn.disabled = true;
+            btn.className = 'w-full bg-white/20 text-zinc-400 cursor-not-allowed font-bold text-xs py-3.5 rounded-xl transition-all uppercase tracking-wider flex items-center justify-center gap-2';
+            btn.innerHTML = '<i class="fa-brands fa-whatsapp text-sm"></i> Select a Room Box to Enable Booking';
+
+            const container = document.getElementById('matrix-boxes-container');
+            container.innerHTML = '';
+
+            // Build Visual Room Grid Boxes
+            allRoomsArray.forEach(roomNum => {
+                const isBooked = bookedRoomsArray.includes(roomNum);
+                const box = document.createElement('div');
+
+                if (isBooked) {
+                    box.className = 'room-box-item p-3 bg-red-950/40 border border-red-800/40 rounded-xl text-center cursor-not-allowed opacity-60 relative group';
+                    box.innerHTML = `
+                        <span class="block text-xs font-bold text-red-400 line-through">RM ${roomNum}</span>
+                        <span class="text-[9px] text-red-500 font-mono uppercase block mt-0.5">Taken</span>
+                    `;
+                } else {
+                    box.className = 'room-box-item p-3 bg-cardBg border border-white/30 hover:border-white rounded-xl text-center cursor-pointer transition-all duration-200 hover:scale-105 shadow-md hover:shadow-white/10';
+                    box.id = 'room-box-' + roomNum;
+                    box.onclick = () => selectRoomBox(roomNum, pricePerNight);
+                    box.innerHTML = `
+                        <span class="block text-xs font-bold text-white">RM ${roomNum}</span>
+                        <span class="text-[9px] text-emerald-400 font-mono uppercase block mt-0.5"><i class="fa-solid fa-check text-[8px]"></i> Available</span>
+                    `;
+                }
+                container.appendChild(box);
+            });
+
+            document.getElementById('room-matrix-modal').classList.remove('hidden');
+            calculateTotal();
+        }
+
+        function selectRoomBox(roomNum, price) {
+            // Deselect previous
+            document.querySelectorAll('.room-box-item').forEach(el => {
+                if (!el.classList.contains('cursor-not-allowed')) {
+                    el.classList.remove('bg-emerald-600', 'border-emerald-400', 'scale-105');
+                    el.classList.add('bg-cardBg', 'border-white/30');
+                }
+            });
+
+            // Highlight selected
+            const activeBox = document.getElementById('room-box-' + roomNum);
+            if (activeBox) {
+                activeBox.classList.remove('bg-cardBg', 'border-white/30');
+                activeBox.classList.add('bg-emerald-600', 'border-emerald-400', 'scale-105');
+            }
+
+            document.getElementById('selected-room-number').value = roomNum;
+            document.getElementById('selected-room-badge').innerText = 'Room ' + roomNum + ' (Selected)';
+            document.getElementById('selected-room-badge').className = 'text-sm font-bold text-emerald-400';
+
+            // Enable submit button
+            const btn = document.getElementById('submit-booking-btn');
+            btn.disabled = false;
+            btn.className = 'w-full bg-white text-black hover:bg-zinc-200 font-bold text-xs py-3.5 rounded-xl transition-all uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl';
+            btn.innerHTML = '<i class="fa-brands fa-whatsapp text-sm"></i> Confirm Room ' + roomNum + ' Reservation via WhatsApp';
+
+            calculateTotal();
+        }
+
+        function closeRoomMatrix() {
+            document.getElementById('room-matrix-modal').classList.add('hidden');
+        }
+
+        function calculateTotal() {
+            const price = parseInt(document.getElementById('selected-room-price').value) || 0;
+            const checkinVal = document.getElementById('modal-checkin').value;
+            const checkoutVal = document.getElementById('modal-checkout').value;
+
+            if (checkinVal && checkoutVal) {
+                const date1 = new Date(checkinVal);
+                const date2 = new Date(checkoutVal);
+                const diffTime = Math.abs(date2 - date1);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) || 1;
+                const total = diffDays * price;
+                document.getElementById('modal-total-display').innerText = '₦' + total.toLocaleString() + ' (' + diffDays + ' Night' + (diffDays > 1 ? 's' : '') + ')';
+            } else {
+                document.getElementById('modal-total-display').innerText = '₦' + price.toLocaleString() + ' / Night';
+            }
+        }
+
+        function handleReservationSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('guest-name').value;
+            const phone = document.getElementById('guest-phone').value;
+            const roomNum = document.getElementById('selected-room-number').value;
+            const checkin = document.getElementById('modal-checkin').value;
+            const checkout = document.getElementById('modal-checkout').value;
+            const total = document.getElementById('modal-total-display').innerText;
+
+            if (!roomNum) {
+                alert('Please select an available room box first!');
+                return;
+            }
+
+            const message = `Hello Jayhiltin Hotel Front Desk,%0A%0A*NEW RESERVATION REQUEST*%0A- *Guest Name:* ${name}%0A- *Phone:* ${phone}%0A- *Category:* ${currentCategoryName}%0A- *Assigned Room Box:* Room ${roomNum}%0A- *Check-In:* ${checkin}%0A- *Check-Out:* ${checkout}%0A- *Total Rate:* ${total}`;
+
+            window.open(`https://wa.me/2348067008323?text=${message}`, '_blank');
+            closeRoomMatrix();
+        }
+    </script>
+</body>
+</html>

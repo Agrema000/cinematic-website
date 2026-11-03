@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview & About | Jayhiltin Hotel & Suites</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#050505',
+                        cardBg: '#121212',
+                        borderMuted: '#222222'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .glass-header {
+            background: rgba(5, 5, 5, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .glass-dock {
+            background: rgba(18, 18, 18, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-white antialiased font-sans overflow-x-hidden selection:bg-white selection:text-black">
+
+    <!-- MAIN BRAND NAVIGATION HEADER -->
+<!-- MAIN BRAND NAVIGATION HEADER -->
+<header class="sticky top-0 z-40 glass-header border-b border-borderMuted px-4 md:px-12 py-3 flex justify-between items-center">
+    
+    <!-- Exact Pill Capsule: Rounded Logo Image + Typed Text -->
+    <a href="index.html" class="flex items-center gap-3 bg-[#0D1117]/90 border border-white/20 rounded-full py-1.5 px-4 shadow-xl backdrop-blur-md hover:border-white transition-all">
+        <!-- Rounded Circular Image Container -->
+        <div class="w-9 h-9 rounded-full overflow-hidden bg-white/10 border border-white/30 flex items-center justify-center shrink-0">
+            <img src="images/logo.png" alt="Jay Hiltin Logo" class="w-full h-full object-cover scale-125">
+        </div>
+        <!-- Typed Brand Name & Subtext -->
+        <div class="pr-2">
+            <h1 class="text-xs md:text-sm font-extrabold tracking-[0.2em] text-white uppercase leading-none">JAY HILTIN</h1>
+            <p class="text-[7px] md:text-[8px] text-zinc-400 tracking-[0.25em] uppercase mt-1">HOTEL & SUITES</p>
+        </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="hidden lg:flex items-center gap-6 text-xs tracking-widest uppercase font-medium text-zinc-300">
+        <a href="index.html" class="hover:text-white transition-colors">Home</a>
+        <a href="overview.html" class="hover:text-white transition-colors">Overview</a>
+        <a href="amenities.html" class="hover:text-white transition-colors">Amenities</a>
+        <a href="rooms.html" class="hover:text-white transition-colors">Rooms & Suites</a>
+        <a href="policies.html" class="hover:text-white transition-colors">Policies</a>
+        <a href="location.html" class="hover:text-white transition-colors">Location</a>
+        <a href="https://jayhiltin.infinityfreeapp.com/" target="_blank" class="text-amber-400 hover:text-amber-300 transition-colors flex items-center gap-1.5 font-bold">
+            <i class="fa-solid fa-crown text-[10px]"></i> Loyalty Program
+        </a>
+    </div>
+
+    <!-- Desktop Reservation Route Button -->
+    <a href="rooms.html" 
+       class="hidden lg:flex bg-white text-black hover:bg-zinc-200 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider transition-all duration-300 items-center gap-2">
+        <i class="fa-solid fa-calendar-check"></i> DIRECT RESERVATION
+    </a>
+
+    <!-- Mobile Hamburger Toggle Button -->
+    <button id="menu-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu" class="lg:hidden text-white bg-white/10 hover:bg-white/20 border border-white/20 p-2.5 rounded-lg text-base focus:outline-none transition-colors">
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+    </button>
+</header>
+
+<!-- MOBILE NAVIGATION DRAWER -->
+<div id="mobile-menu" class="hidden fixed inset-x-0 top-[65px] z-30 bg-black/95 border-b border-borderMuted p-6 backdrop-blur-xl lg:hidden space-y-4 text-sm font-medium tracking-wider uppercase transition-all duration-300">
+    <a href="index.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Home</a>
+    <a href="overview.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Overview</a>
+    <a href="amenities.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Amenities</a>
+    <a href="rooms.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Rooms & Suites</a>
+    <a href="policies.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Policies</a>
+    <a href="location.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Location</a>
+    <a href="https://jayhiltin.infinityfreeapp.com/" target="_blank" onclick="toggleMobileMenu()" class="block py-2 text-amber-400 font-bold border-b border-borderMuted/50 flex items-center gap-2">
+        <i class="fa-solid fa-crown text-xs"></i> Loyalty Program
+    </a>
+    <a href="rooms.html" 
+       class="mt-4 bg-white text-black font-bold text-xs py-3 rounded-lg text-center block hover:bg-zinc-200 transition-colors">
+        <i class="fa-solid fa-calendar-check mr-2"></i> DIRECT RESERVATION
+    </a>
+</div>
+
+    <!-- MOBILE NAVIGATION DRAWER -->
+    <div id="mobile-menu" class="hidden fixed inset-x-0 top-[65px] z-30 bg-black/95 border-b border-borderMuted p-6 backdrop-blur-xl lg:hidden space-y-4 text-sm font-medium tracking-wider uppercase transition-all duration-300">
+        <a href="index.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Home</a>
+        <a href="overview.html" onclick="toggleMobileMenu()" class="block py-2 text-white font-bold border-b border-borderMuted/50">Overview</a>
+        <a href="amenities.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Amenities</a>
+        <a href="rooms.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Rooms & Suites</a>
+        <a href="policies.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Policies</a>
+        <a href="location.html" onclick="toggleMobileMenu()" class="block py-2 text-zinc-300 hover:text-white border-b border-borderMuted/50">Location</a>
+    </div>
+
+    <!-- OVERVIEW HERO SECTION -->
+    <section class="px-4 md:px-12 pt-16 pb-12 max-w-7xl mx-auto border-b border-borderMuted">
+        <span class="inline-block text-zinc-400 text-xs font-mono uppercase tracking-[0.2em] mb-3 border border-white/20 px-3.5 py-1 rounded-full bg-white/5">
+            Beyond Your Imagination
+        </span>
+        <h2 class="text-4xl md:text-7xl font-light tracking-tight mb-6">
+            Redefining Luxury & <span class="font-bold underline decoration-white/30 underline-offset-8">Relaxation in Kaduna.</span>
+        </h2>
+        <p class="text-zinc-400 text-base md:text-lg max-w-3xl font-light leading-relaxed">
+            Jayhiltin Hotel & Suites is more than just a place to rest your head—it is a destination where your comfort and satisfaction are our top priorities. We understand that your stay is not just about a room; it's about creating lasting memories.
+        </p>
+    </section>
+
+    <!-- EDITORIAL NARRATIVE & CORE STATS -->
+    <section class="px-4 md:px-12 py-16 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-6 space-y-6">
+            <span class="text-xs font-mono text-zinc-400 tracking-widest uppercase">The Jayhiltin Experience</span>
+            <h3 class="text-3xl font-light tracking-tight">Live Like A King or Queen</h3>
+            <p class="text-zinc-400 text-sm font-light leading-relaxed">
+                Located in the heart of Kaduna, our property combines sleek architectural design with warm, personalized Nigerian hospitality. Whether you are traveling for executive business or a peaceful personal getaway, our bespoke services cater to your every need.
+            </p>
+            <div class="grid grid-cols-2 gap-4 pt-4">
+                <div class="p-4 bg-cardBg border border-borderMuted rounded-xl">
+                    <h4 class="text-2xl font-bold text-white mb-1">15</h4>
+                    <p class="text-xs text-zinc-400 uppercase tracking-wider">Luxury Guest Rooms</p>
+                </div>
+                <div class="p-4 bg-cardBg border border-borderMuted rounded-xl">
+                    <h4 class="text-2xl font-bold text-white mb-1">24/7</h4>
+                    <p class="text-xs text-zinc-400 uppercase tracking-wider">Dedicated Front Desk</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-6">
+            <div class="rounded-2xl overflow-hidden border border-borderMuted group">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80" alt="Hotel Interior" class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+        </div>
+
+    </section>
+
+    <!-- CORE AMENITIES SNAPSHOT -->
+    <section class="px-4 md:px-12 py-16 border-t border-borderMuted max-w-7xl mx-auto">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <span class="text-xs font-mono text-zinc-400 tracking-widest uppercase">Facilities</span>
+                <h3 class="text-3xl font-light tracking-tight mt-1">Our Core Amenities</h3>
+            </div>
+            <a href="amenities.html" class="text-xs text-white font-mono hover:underline flex items-center gap-1">
+                EXPLORE AMENITIES <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-6 bg-cardBg border border-borderMuted rounded-2xl">
+                <i class="fa-solid fa-water-ladder text-2xl text-white mb-4"></i>
+                <h4 class="text-lg font-bold mb-2">Swimming Pool</h4>
+                <p class="text-xs text-zinc-400 font-light">Pristine outdoor pool engineered for relaxation and leisure swims.</p>
+            </div>
+            <div class="p-6 bg-cardBg border border-borderMuted rounded-2xl">
+                <i class="fa-solid fa-martini-glass-citrus text-2xl text-white mb-4"></i>
+                <h4 class="text-lg font-bold mb-2">Outdoor Bar</h4>
+                <p class="text-xs text-zinc-400 font-light">Open-air terrace bar serving refreshing drinks and evening relaxation.</p>
+            </div>
+            <div class="p-6 bg-cardBg border border-borderMuted rounded-2xl">
+                <i class="fa-solid fa-glass-water text-2xl text-white mb-4"></i>
+                <h4 class="text-lg font-bold mb-2">Indoor Bar</h4>
+                <p class="text-xs text-zinc-400 font-light">Sophisticated climate-controlled lounge with premium spirits and cocktails.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOATING MUBIEN-STYLE BOTTOM DOCK -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-lg">
+        <div class="glass-dock rounded-full px-4 py-3 flex items-center justify-between shadow-2xl">
+            <a href="index.html" class="flex items-center gap-2 pl-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></span>
+                <span class="text-xs font-bold tracking-widest uppercase">Jayhiltin</span>
+            </a>
+
+            <a href="rooms.html" 
+               class="bg-white text-black px-6 py-2 rounded-full text-xs font-bold hover:bg-zinc-200 transition-all duration-300 flex items-center gap-2 shadow-lg">
+                <i class="fa-solid fa-calendar-check"></i> Book Room
+            </a>
+
+            <div class="flex items-center gap-3 pr-2 text-zinc-300 text-sm">
+                <a href="tel:+2348067008323" class="hover:text-white transition-colors"><i class="fa-solid fa-phone"></i></a>
+                <a href="mailto:enquiries@jayhiltin.com" class="hover:text-white transition-colors"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = 'fa-solid fa-bars';
+            } else {
+                icon.className = 'fa-solid fa-xmark';
+            }
+        }
+    </script>
+</body>
+</html>
